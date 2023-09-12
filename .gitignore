@@ -1,0 +1,34 @@
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+/types
+
+# TypeScript type declaration files
+*.d.ts
+
+# Debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories
+.idea
+.vscode
+
+# OS generated
+.DS_Store
+*.log
+Thumbs.db
+
+# Test and coverage output
+/coverage
+/.nyc_output
+
+# Yarn PnP
+.pnp/
+.pnp.js
+
+# TypeScript cache
+*.tsbuildinfo
