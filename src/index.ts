@@ -1,2 +1,1 @@
-export * from './provider/FeatureFlagProvider';
-export * from './provider/FeatureFlagContext';
+export * from './provider';

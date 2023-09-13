@@ -1,26 +1,21 @@
-import React, { useState, ReactNode } from 'react';
-import FeatureFlagContext, { FeatureFlags } from './FeatureFlagContext';
+import React, { useReducer } from 'react';
+import { FeatureFlagContext } from './FeatureFlagContext';
+import { FeatureFlags } from '../store/types';
+import { featureFlagsReducer } from '../store/featureFlagReducer';
 
 interface FeatureFlagProviderProps<T extends FeatureFlags> {
   initialFlags: T;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export function FeatureFlagProvider<T extends FeatureFlags>({
   initialFlags,
   children,
 }: FeatureFlagProviderProps<T>) {
-  const [flags, setFlags] = useState<T>(initialFlags);
-
-  const setFlag = (flagKey: keyof T, value: boolean) => {
-    setFlags((prevFlags) => ({
-      ...prevFlags,
-      [flagKey]: value,
-    }));
-  };
+  const [state, dispatch] = useReducer(featureFlagsReducer, initialFlags);
 
   return (
-    <FeatureFlagContext.Provider value={{ flags, setFlag }}>
+    <FeatureFlagContext.Provider value={{ state, dispatch }}>
       {children}
     </FeatureFlagContext.Provider>
   );
