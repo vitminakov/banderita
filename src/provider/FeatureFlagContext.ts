@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { FeatureFlags, FeatureFlagContextValue } from '../store/types';
+import { FeatureFlagsBase, FeatureFlagContextValue } from '../store/types';
 
 export const FeatureFlagContext = createContext<
-  FeatureFlagContextValue<FeatureFlags> | undefined
+  FeatureFlagContextValue<FeatureFlagsBase> | undefined
 >(undefined);

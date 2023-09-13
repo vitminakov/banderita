@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { FeatureFlagContext } from './FeatureFlagContext';
-import { FeatureFlags, FeatureFlagContextValue } from '../store/types';
+import { FeatureFlagsBase, FeatureFlagContextValue } from '../store/types';
 import { FeatureFlagActions } from '../store/actionTypes';
 import {
   FeatureFlagError,
   FeatureFlagErrorCodes,
 } from '../shared/FeatureFlagError';
 
-export function useFeatureFlags<T extends FeatureFlags>(): [
+export function useFeatureFlags<T extends FeatureFlagsBase>(): [
   T,
   (key: keyof T, value: boolean) => void
 ] {
@@ -31,7 +31,7 @@ export function useFeatureFlags<T extends FeatureFlags>(): [
   return [context.state, setFlag];
 }
 
-export function useFeatureFlag<T extends FeatureFlags>(key: keyof T): boolean {
+export function useFeatureFlag<T extends FeatureFlagsBase>(key: keyof T): boolean {
   const [flags] = useFeatureFlags<T>();
   return flags[key];
 }

@@ -1,14 +1,14 @@
 import React, { useReducer } from 'react';
 import { FeatureFlagContext } from './FeatureFlagContext';
-import { FeatureFlags } from '../store/types';
 import { featureFlagsReducer } from '../store/featureFlagReducer';
+import { ConfiguredFeatureFlags } from '../store/types';
 
-interface FeatureFlagProviderProps<T extends FeatureFlags> {
+interface FeatureFlagProviderProps<T extends ConfiguredFeatureFlags> {
   initialFlags: T;
   children: React.ReactNode;
 }
 
-export function FeatureFlagProvider<T extends FeatureFlags>({
+export function FeatureFlagProvider<T extends ConfiguredFeatureFlags>({
   initialFlags,
   children,
 }: FeatureFlagProviderProps<T>) {
